@@ -1,7 +1,8 @@
 version: '3'
 services:
   fastapi:
-    image: bmotevalli/test-api-1:latest
+    build: .
+    container_name: dormant
     ports:
       - 8000:8000
     # Add other configuration options as needed
