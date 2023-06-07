@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse, HTMLResponse
 
 app = FastAPI()
 
-@app.get("api/2/healthcheck")
+@app.get("/api/2/healthcheck")
 async def healthcheck():
     return {"message": "Hello from API2"}
 

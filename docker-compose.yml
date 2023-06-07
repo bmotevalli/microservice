@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  fastapi:
+    image: benmotevalli/dormant-ml-api:latest
+    build: .
+    container_name: dormant
+    # env_file:
+    #   - .env
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            device_ids: ['0']
+            capabilities: [gpu]
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - fastapi
