@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-api-1-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-api-1-app
+  template:
+    metadata:
+      labels:
+        app: test-api-1-app
+    spec:
+      containers:
+        - name: test-api-1-container
+          image: bmotevalli/test-api-1
+          ports:
+            - containerPort: 8000
